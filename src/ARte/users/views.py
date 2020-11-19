@@ -20,8 +20,8 @@ from django.views.decorators.cache import cache_page
 
 
 from .forms import SignupForm, RecoverPasswordCodeForm, RecoverPasswordForm, UploadMarkerForm, UploadObjectForm, ArtworkForm, ExhibitForm, ProfileForm, PasswordChangeForm
-from .models import Marker, Artwork, Profile
-from core.models import Exhibit, Object
+from .models import  Profile
+from core.models import Exhibit, Object, Artwork , Marker
 from core.helpers import *
 
 def signup(request):

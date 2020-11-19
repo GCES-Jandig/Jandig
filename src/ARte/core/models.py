@@ -1,10 +1,16 @@
 from django.db import models
+<<<<<<< HEAD
 # from users.models import Artwork, Profile
 from django.db.models.signals import post_save, post_delete
 from datetime import datetime
 from django.dispatch import receiver
 from django.core.files.storage import default_storage
 from users.models import Profile
+=======
+from datetime import datetime
+from django.dispatch import receiver
+from django.db.models.signals import post_save, post_delete
+>>>>>>> 353-structure-marker-model
 import urllib
 import re
 
@@ -116,7 +122,7 @@ def remove_source_file(sender, instance, **kwargs):
     instance.source.delete(False)
     
 class Exhibit(models.Model):
-    owner = models.ForeignKey(Profile,on_delete=models.DO_NOTHING,related_name="exhibits")
+    owner = models.ForeignKey('users.Profile',on_delete=models.DO_NOTHING,related_name="exhibits")
     name = models.CharField(unique=True, max_length=50)
     slug = models.CharField(unique=True, max_length=50)
     artworks = models.ManyToManyField('users.Artwork',related_name="exhibits")
@@ -132,8 +138,14 @@ class Exhibit(models.Model):
     @property
     def date(self):
         return self.creation_date.strftime("%d/%m/%Y")
+<<<<<<< HEAD
 class Marker(models.Model):
     owner = models.ForeignKey(Profile, on_delete=models.DO_NOTHING)
+=======
+
+class Marker(models.Model):
+    owner = models.ForeignKey('users.Profile', on_delete=models.DO_NOTHING, related_name="markers")
+>>>>>>> 353-structure-marker-model
     source = models.ImageField(upload_to='markers/')
     uploaded_at = models.DateTimeField(auto_now=True)
     author = models.CharField(max_length=60, blank=False)
@@ -153,12 +165,20 @@ class Marker(models.Model):
 
     @property
     def exhibits_count(self):
+<<<<<<< HEAD
         from core.models import Exhibit
+=======
+        from .models import Exhibit
+>>>>>>> 353-structure-marker-model
         return Exhibit.objects.filter(artworks__marker=self).count()
 
     @property
     def exhibits_list(self):
+<<<<<<< HEAD
         from core.models import Exhibit
+=======
+        from .models import Exhibit
+>>>>>>> 353-structure-marker-model
         return Exhibit.objects.filter(artworks__marker=self)
 
     @property
@@ -167,6 +187,7 @@ class Marker(models.Model):
             return True
         return False
 
+<<<<<<< HEAD
 
     @receiver(post_delete, sender=Marker)
     def remove_source_file(sender, instance, **kwargs):
@@ -198,3 +219,8 @@ class Artwork(models.Model):
 
         return False
 
+=======
+@receiver(post_delete, sender=Marker)
+def remove_source_file(sender, instance, **kwargs):
+    instance.source.delete(False)
+>>>>>>> 353-structure-marker-model

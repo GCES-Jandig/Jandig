@@ -26,9 +26,7 @@ from core.helpers import *
 
 def signup(request):
 
-    if request.method == 'POST':
-        form = SignupForm(request.POST)
-        
+    if request.method == 'POST': 
         if form.is_valid():
             form.save()
             username = form.cleaned_data.get('username')
@@ -50,6 +48,8 @@ def recover_password(request):
         form = RecoverPasswordForm(request.POST)
 
         if form.is_valid():
+            logger = logging.getLogger("mylogger")
+            logger.info("Whatever to log")  
             username_or_email = form.cleaned_data.get('username_or_email')
             global recovering_email
 

@@ -8,13 +8,8 @@ from django.views.decorators.cache import cache_page
 
 from .helpers import handle_upload_image
 from .forms import UploadFileForm, ExhibitForm
-<<<<<<< HEAD
 from .models import Artwork2, Exhibit, Object
-from users.models import Artwork, Marker
-=======
-from .models import Artwork2, Exhibit, Marker
-from users.models import Artwork, Object
->>>>>>> 353-structure-marker-model
+from core.models import Artwork, Marker
 
 @cache_page(60 * 60)
 def service_worker(request):

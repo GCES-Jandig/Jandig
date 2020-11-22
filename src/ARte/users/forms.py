@@ -10,13 +10,9 @@ from django.contrib.auth.forms import PasswordChangeForm as OrigPasswordChangeFo
 from django.utils.translation import ugettext_lazy as _
 from django.forms.widgets import HiddenInput
 
-<<<<<<< HEAD
-from .models import Marker, Artwork, Profile
-from core.models import Object
-=======
-from .models import Object, Artwork, Profile
-from core.models import Marker
->>>>>>> 353-structure-marker-model
+from core.models import Marker, Artwork,Object 
+from users.models import Profile
+
 
 User = get_user_model()
 

@@ -1,6 +1,6 @@
 from django.contrib import admin
-from users.models import Artwork, Profile
-from core.models import  Object
+from users.models import  Profile
+from core.models import  Object,Artwork
 
 admin.site.register(Artwork)
 admin.site.register(Profile)

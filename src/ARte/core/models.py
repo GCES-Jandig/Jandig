@@ -4,7 +4,6 @@ from django.db.models.signals import post_save, post_delete
 from datetime import datetime
 from django.dispatch import receiver
 from django.core.files.storage import default_storage
-from users.models import Profile
 import urllib
 import re
 from users.models  import Profile

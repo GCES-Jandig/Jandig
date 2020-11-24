@@ -19,7 +19,7 @@ if READ_DOT_ENV_FILE:
 
 DEBUG = env.bool('DJANGO_DEBUG', False)
 
-
+AUTH_PROFILE_MODULE = "users.models.Profile"
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = env('DJANGO_SECRET_KEY', default='gw)48fp(ct67v4+0_tpxl=$vw=-x&y9(&0n6!n4mpw5m!4gaor')
 

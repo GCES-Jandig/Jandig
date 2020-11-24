@@ -20,7 +20,7 @@ from django.views.decorators.cache import cache_page
 
 
 from .forms import SignupForm, RecoverPasswordCodeForm, RecoverPasswordForm, UploadMarkerForm, UploadObjectForm, ArtworkForm, ExhibitForm, ProfileForm, PasswordChangeForm
-from .models import  Profile
+from users.models import  Profile
 from core.models import Exhibit, Object, Artwork , Marker
 from core.helpers import *
 
@@ -30,6 +30,11 @@ def signup(request):
         form = SignupForm(request.POST)
         
         if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            raw_password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=raw_password)
+            login(request, user)
             return redirect('home')
 
 

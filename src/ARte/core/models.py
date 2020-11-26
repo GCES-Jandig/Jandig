@@ -28,3 +28,13 @@ class Exhibit(models.Model):
     @property
     def date(self):
         return self.creation_date.strftime("%d/%m/%Y")
+    
+    @property
+    def exhibits_count(self):
+        from core.models import Exhibit
+        return Exhibit.objects.filter(artworks__augmented=self).count()
+
+    @property
+    def exhibits_list(self):
+        from core.models import Exhibit
+        return Exhibit.objects.filter(artworks__augmented=self) 

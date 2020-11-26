@@ -4,9 +4,9 @@ from django.db.models.signals import post_save, post_delete
 from django.dispatch import receiver
 from django.core.files.storage import default_storage
 import re
-from users import calcula
+from .calcula import calculaartwork
 from .choices import COUNTRY_CHOICES
-from users import calculainterface
+from .calculainterface import calculaInterface
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.DO_NOTHING)
@@ -143,7 +143,7 @@ def remove_source_file(sender, instance, **kwargs):
 
 
 class Artwork(models.Model,object):
-    from users.calculainterface import Calculainterface
+    from .calculainterface import Calculainterface
     author = models.ForeignKey(Profile, on_delete=models.DO_NOTHING)
     marker = models.ForeignKey(Marker, on_delete=models.DO_NOTHING)
     augmented = models.ForeignKey(Object, on_delete=models.DO_NOTHING)
@@ -157,6 +157,7 @@ class Artwork(models.Model,object):
             return True
 
         return False
+
 @property 
 def exhibits_count(self):
   """

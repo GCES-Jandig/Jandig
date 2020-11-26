@@ -1,3 +1,3 @@
-parte retirada
+# parte retirada
 
-user = models.OneToOneField(User, on_delete=models.DO_NOTHING)
+# user = models.OneToOneField(User, on_delete=models.DO_NOTHING)

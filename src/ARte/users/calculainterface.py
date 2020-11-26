@@ -1,24 +1,9 @@
 
-
-
-
-  
-           
-
-
-class Calculainterface: 
-      def __init__ (nonme):
+class calculaInterface: 
+      def __init__ (self):
             self.nome=nome
 
-
-
-
-
-
-
-
-
-from users.models  import Artwork
+from .models  import Artwork
 
 
 @property
@@ -36,6 +21,6 @@ from users.models  import Artwork
       raise NotImplementedError
 
 
- Calculainterface.exhibits_count(artwork)
+ calculaInterface.exhibits_count(artwork)
 
- Calculainterface.exhibits_list(artwork)
+ calculaInterface.exhibits_list(artwork)

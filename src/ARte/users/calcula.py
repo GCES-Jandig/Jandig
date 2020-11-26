@@ -1,13 +1,10 @@
 
 
 
-    
 class calculaartwork():
-  def __init__(nome):
-      self.nome=nome
-   
+    pass
     
-from users.models import Artwork
+from .models import Artwork
 from core.models import Exhibit
 
 def exhibits_count(Artwork: artwork):
@@ -20,5 +17,5 @@ def exhibits_list(Artwork: artwork):
 
 
 
- calculaartwork.exhibits_count(artwork)
- calculaartwork.exhibits_list(artwork)
+calculaartwork.exhibits_count(artwork)
+calculaartwork.exhibits_list(artwork)

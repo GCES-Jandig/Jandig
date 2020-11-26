@@ -1,21 +1,20 @@
 
 
-
-class calculaartwork():
-    pass
-    
-from .models import Artwork
 from core.models import Exhibit
+class calcartwork(object):
 
-def exhibits_count(Artwork: artwork):
-        return Exhibit.objects.filter(artworks__in=[artwork]).count()
+   def __init__(self,work):   
+      self.work=work
+
+   def exhibits_count(self,field):
+        return Exhibit.objects.filter(field=[self.work]).count()
     
-def exhibits_list(Artwork: artwork):
-        return list(Exhibit.objects.filter(artworks__in=[artwork]))
+   def exhibits_list(self,field):
+        return list(Exhibit.objects.filter(field=[self.work]))
 
 
 
 
 
-calculaartwork.exhibits_count(artwork)
-calculaartwork.exhibits_list(artwork)
+
+

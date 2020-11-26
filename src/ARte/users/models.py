@@ -143,7 +143,7 @@ def remove_source_file(sender, instance, **kwargs):
 
 
 class Artwork(models.Model,object):
-    from .calculainterface import Calculainterface
+    
     author = models.ForeignKey(Profile, on_delete=models.DO_NOTHING)
     marker = models.ForeignKey(Marker, on_delete=models.DO_NOTHING)
     augmented = models.ForeignKey(Object, on_delete=models.DO_NOTHING)
@@ -160,15 +160,12 @@ class Artwork(models.Model,object):
 
 @property 
 def exhibits_count(self):
-  """
-  docstring
-  """
-  raise NotImplementedError
+   import calcula;  
+   calc1=self.calc__init__()
+   calc1.exhibits_count()           
 
-     
 @property 
 def exhibits_list(self):
- """
- docstring
- """
- raise NotImplementedError
+   import calcula;
+   calc1=self.calc__init__()
+   calc1.exhibits_list()       

@@ -4,7 +4,6 @@ from django.db.models.signals import post_save, post_delete
 from django.dispatch import receiver
 from django.core.files.storage import default_storage
 import re
-from .calcula import calcartwork
 from .choices import COUNTRY_CHOICES
 
 class Profile(models.Model):
@@ -154,8 +153,16 @@ class Artwork(models.Model,object):
     def in_use(self):
         if self.exhibits_count > 0:
             return True
+        return False        
 
-        return False
+    @property
+    def exhibits_count(self):
+        from core.models import Exhibit
+        return Exhibit.objects.filter(artworks__in=[self]).count()
+   
+
+
+         
 
 
 

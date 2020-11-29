@@ -617,11 +617,9 @@ def related_content(request):
         ctx = {'artworks': artworks, 'exhibits': exhibits, "seeall:":False}
     elif element_type == 'artwork':
          
-        element = Artwork.objects.get(id=element_id)
-         
         from calcula import calcartwork
          
-        calc1=calcartwork.__init__(element)
+        calc1=calcartwork.__init__(element_id)
 
         exhibits = calc1.exhibits_list()
        

@@ -1,18 +1,20 @@
 
 from django.db import models
+from core.models import Exhibit
+from .models import Artwork
 
 class calcartwork(models.Model,object):
 
-   def __init__(self,work):   
-      self.work=work
-
-   def exhibits_count(self,field):
-        from core.models import Exhibit 
-        return Exhibit.objects.filter(artworks__in=[self.work]).count()
+   def __init__(self,id):   
+      self.id=id            
+         
+   def exhibits_count(self):
+        artwork=Artwork.objects.get(id=self.id)
+        return Exhibit.objects.filter(artworks__in=[artwork]).count()
     
-   def exhibits_list(self,field):
-        from core.models import Exhibit
-        return list(Exhibit.objects.filter(artworks__in=[self.work]))
+   def exhibits_list(self):
+        artwork=Artwork.objects.get(id=self.id)
+        return list(Exhibit.objects.filter(artworks__in=[artwork]))
 
 
 

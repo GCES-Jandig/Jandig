@@ -4,9 +4,8 @@ from django.db.models.signals import post_save, post_delete
 from django.dispatch import receiver
 from django.core.files.storage import default_storage
 import re
-from .calcula import calculaartwork
+from .calcula import calcartwork
 from .choices import COUNTRY_CHOICES
-from .calculainterface import calculaInterface
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.DO_NOTHING)
@@ -158,14 +157,6 @@ class Artwork(models.Model,object):
 
         return False
 
-@property 
-def exhibits_count(self):
-   import calcula;  
-   calc1=self.calc__init__()
-   calc1.exhibits_count()           
 
-@property 
-def exhibits_list(self):
-   import calcula;
-   calc1=self.calc__init__()
-   calc1.exhibits_list()       
+
+

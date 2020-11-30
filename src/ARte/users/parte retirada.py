@@ -23,3 +23,13 @@ def exhibits_list(self):
     def exhibits_count(self):
         from core.models import Exhibit
         return Exhibit.objects.filter(artworks__in=[self]).count()
+
+     
+     
+     # method was  take out from artwrok in order to  verify is work properly. 
+     @property
+    def in_use(self):
+        if self.exhibits_count > 0:
+            return True
+
+        return False     

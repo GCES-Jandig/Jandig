@@ -618,8 +618,8 @@ def related_content(request):
     elif element_type == 'artwork':
          
         from calcula import calcartwork
-         
-        calc1=calcartwork.__init__(element_id)
+        artwork=Artwork.objects.get(id=self.id)
+        calc1=calcartwork(artwork)
 
         exhibits = calc1.exhibits_list()
        

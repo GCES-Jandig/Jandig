@@ -5,7 +5,7 @@ from django.dispatch import receiver
 from django.core.files.storage import default_storage
 import re
 from .choices import COUNTRY_CHOICES
-
+from .calcula import Calcartwork
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.DO_NOTHING)
     bio = models.TextField(max_length=500, blank=True)
@@ -150,15 +150,9 @@ class Artwork(models.Model,object):
     created_at = models.DateTimeField(auto_now=True)              
 
     @property
-    def in_use(self):
-        if self.exhibits_count > 0:
-            return True
-        return False        
-
-    @property
     def exhibits_count(self):
-        from core.models import Exhibit
-        return Exhibit.objects.filter(artworks__in=[self]).count()
+       calc1=Calcartwork(self)
+       calc1.exhibits_count()    
    
 
 

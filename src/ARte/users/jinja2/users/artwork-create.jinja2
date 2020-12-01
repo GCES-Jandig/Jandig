@@ -132,8 +132,7 @@
                     $('#next-desc').prop('disabled', true);
                 }
             }
-            // setInterval(activateNextButton, 1000);
-            // modal events
+    
             $('#select-marker').click(function(){
                 currentTab = 0;
                 $('#form-modal').modal({showClose: false});
@@ -146,14 +145,13 @@
             })
             $('#next-object').click(function(){
                 currentTab = 1;
-                //$('#form-modal').modal({showClose: false})
                 showTab(currentTab);
             })
             $('#next-desc').click(function(){
                 currentTab = 2;
-                //$('#description-modal').modal({showClose: false})
                 showTab(currentTab);
             })
+            
             // checkboxes
             $('#marker-agreement-chk').click(function(){
                 if($(this).prop('checked') == true){

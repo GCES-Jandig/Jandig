@@ -11,6 +11,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.forms.widgets import HiddenInput
 
 from .models import Marker, Object, Artwork, Profile
+from .choices import COUNTRY_CHOICES
 
 User = get_user_model()
 
@@ -49,7 +50,6 @@ class SignupForm(UserCreationForm):
 
         return email
 
-from .choices import COUNTRY_CHOICES
 
 class PasswordChangeForm(OrigPasswordChangeForm):
     def __init__(self, *args, **kwargs):
@@ -116,6 +116,7 @@ class ProfileForm(forms.ModelForm):
 
         return email
 
+
 class LoginForm(AuthenticationForm):
     def __init__(self, *args, **kwargs):
         super(LoginForm, self).__init__(*args, **kwargs)
@@ -166,6 +167,7 @@ class LoginForm(AuthenticationForm):
 class RecoverPasswordForm(forms.Form):
     username_or_email = forms.CharField(label='username / email', max_length="50")
 
+
 class RecoverPasswordCodeForm(forms.Form):
     verification_code = forms.CharField(label='Verification code', max_length="200")
 
@@ -186,7 +188,6 @@ class UploadMarkerForm(forms.ModelForm):
     class Meta:
         model = Marker
         exclude = ('owner', 'uploaded_at')
-
 
 
 class UploadObjectForm(forms.ModelForm):
@@ -226,7 +227,6 @@ class ArtworkForm(forms.Form):
         self.fields['augmented_author'].widget.attrs['placeholder'] = _('declare different author name')
         self.fields['title'].widget.attrs['placeholder'] = _('Artwork title')
         self.fields['description'].widget.attrs['placeholder'] = _('Artwork description')
-
 
 
 class ExhibitForm(forms.Form):

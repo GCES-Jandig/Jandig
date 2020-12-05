@@ -11,6 +11,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.forms.widgets import HiddenInput
 
 from .models import Marker, Object, Artwork, Profile
+from core.models import Exhibit
 
 User = get_user_model()
 
@@ -237,6 +238,12 @@ class ExhibitForm(forms.Form):
     # FIXME: maybe this can be improved. Possible bug on max artworks per exhibit 
     artworks = forms.CharField(max_length=1000)
 
+    def clean_name(self):
+        name = self.cleaned_data.get('name')
+        if name and Exhibit.objects.filter(name=name).exists():
+            raise forms.ValidationError(_('Name already in use'))
+        return name
+    
     def clean_slug(self):
         data = self.cleaned_data['slug']
         if not re.match("^[a-zA-Z0-9_]*$", data):

@@ -26,6 +26,8 @@ from core.helpers import *
 
 def signup(request):
 
+    form = SignupForm(request.POST)          
+
     if request.method == 'POST': 
         if form.is_valid():
             form.save()

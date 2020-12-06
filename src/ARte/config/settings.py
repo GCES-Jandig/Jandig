@@ -2,7 +2,7 @@ import os
 import environ
 from .wait_db import start_services
 from django.utils.translation import ugettext_lazy as _
-
+from django.contrib.auth import get_user_model
 
 ROOT_DIR = environ.Path(__file__) - 2  # (ARte/config/settings.py - 2 = ARte/)
 APPS_DIR = ROOT_DIR.path('ARte')

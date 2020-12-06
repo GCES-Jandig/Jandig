@@ -5,13 +5,14 @@ from django.dispatch import receiver
 from django.core.files.storage import default_storage
 import re
 from .choices import COUNTRY_CHOICES
+from django.contrib.auth import get_user_model
 
 class Profile(models.Model):
   user = models.OneToOneField(User, on_delete=models.DO_NOTHING)
   bio = models.TextField(max_length=500, blank=True)
   country = models.CharField(max_length=2, choices=COUNTRY_CHOICES, blank=True)
   personal_site = models.URLField()
-
+   
   class Meta:
     permissions = [
       ("moderator", "Can moderate content"),

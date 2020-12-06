@@ -40,7 +40,7 @@ class Migration(migrations.Migration):
     migrations.CreateModel(
             name='Marker',
             fields=[
-                
+                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('source', models.ImageField(upload_to='markers/')),
                 ('uploaded_at', models.DateTimeField(auto_now=True)),
                 ('author', models.CharField(max_length=60)),

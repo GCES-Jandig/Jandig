@@ -50,6 +50,7 @@ def db(ctx, make=False, postgres=False):
     Run migrations
     """
     if make:
+        manage(ctx,"  migrate --fake default ",postgres)
         manage(ctx, "makemigrations", postgres)
         manage(ctx, "migrate", postgres)
     else:
@@ -141,6 +142,6 @@ def docs(ctx):
     ctx.run('sphinx-build docs/ build/')
 
 
-@task
-def populate(ctx):
-    manage(ctx, 'populate_db')
+#@task
+#def populate(ctx):
+ #   manage(ctx, 'populate_db')

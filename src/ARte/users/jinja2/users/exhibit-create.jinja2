@@ -46,7 +46,7 @@
                             {{ form.visible_fields()[1] }}
                             {{ form.visible_fields()[1].errors }} 
                         </p>
-                    <input class="select-btn next-btn" onclick="cleanSlug()" type="submit" value="{{ _('Publish Exhibit') }}"/>
+                    <input class="select-btn next-btn" onclick="cleanName(); cleanSlug()" type="submit" value="{{ _('Publish Exhibit') }}"/>
                 </div>
             </form>
         </div>
@@ -76,6 +76,13 @@
             }
 
 
+            function cleanName() {
+                var name = document.getElementById('id_name').value
+                // IF EXHIBITION'S NAME ALREADY EXISTS:
+                alert("Name " + name + " already in use");
+            }
+
+
             function cleanSlug() {
                 var slug = document.getElementById('id_slug').value
                 let validate = /^[a-zA-Z0-9_]*$/
@@ -83,6 +90,7 @@
                     alert("Url " + slug + " can't contain spaces or special characters (i.e: :, /)");
                 }
             }
+
 
             setInterval(activateNextButton, 100);
             // modal events

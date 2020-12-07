@@ -241,7 +241,7 @@ class ExhibitForm(forms.Form):
     def clean_name(self):
         name = self.cleaned_data.get('name')
         if name and Exhibit.objects.filter(name=name).exists():
-            raise forms.ValidationError(_('Name already in use'))
+            raise forms.ValidationError(_("Name already in use"))
         return name
     
     def clean_slug(self):

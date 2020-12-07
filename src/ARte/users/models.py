@@ -5,7 +5,6 @@ from django.dispatch import receiver
 from django.core.files.storage import default_storage
 import re
 from .choices import COUNTRY_CHOICES
-from django.contrib.auth import get_user_model
 
 class Profile(models.Model):
   user = models.OneToOneField(User, on_delete=models.DO_NOTHING)
